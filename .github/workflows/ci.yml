@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  headless-simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Compile simulation core (no JavaFX)
+        run: |
+          javac -d build $(find src/main/java -path 'src/main/java/garden/app' -prune -o -name '*.java' -print)
+          javac -cp build -d build src/test/java/garden/*.java
+      - name: API smoke test
+        run: java -cp build garden.ManualApiCheck
+      - name: 24-day stability run
+        run: java -cp build garden.StabilityCheck

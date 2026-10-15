@@ -1,8 +1,24 @@
 # Java Simulated Garden
 
+[![CI](https://github.com/jasonmayg/garden-simulation/actions/workflows/ci.yml/badge.svg)](https://github.com/jasonmayg/garden-simulation/actions/workflows/ci.yml)
+
 Computerized Garden is a JavaFX desktop simulation for an automated gardening system.
 The UI is only an operator dashboard; the simulation rules live in backend modules so the
 project can also be tested through `GardenSimulationAPI` without launching JavaFX.
+
+## Team & my role
+
+Two-person course project (software engineering), 2026 — **Jason Geng** and **Ariel Ng**.
+
+- **Jason (me):** built the first working version — the simulation engine, the four automation
+  modules (watering, temperature, pest control, fertilizer), the event model, the
+  `GardenSimulationAPI` used by grading scripts, config loading, the CSV-style logger and the original requirements/design docs —
+  then the first game-style UI and richer simulation logs.
+- **Ariel:** unified the UI into a single `GardenShell` window, built the animated
+  Living Garden board, Garden Defense Board, plant add/remove, help page, and expanded the design docs and UML.
+
+The headless core is checked on every push by GitHub Actions (API smoke test + a seeded
+24-day stability run), no JavaFX required.
 
 ## Main Features
 
